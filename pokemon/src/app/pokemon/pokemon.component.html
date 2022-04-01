@@ -1,0 +1,7 @@
+<div class="container">
+    <app-card *ngFor="let pokemon of pokemons$ | async" [pokemonlist] = "pokemon" (click)="openDialog(pokemon)"></app-card>
+</div>
+
+
+
+
