@@ -38,6 +38,8 @@ export class PokemonComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      result = pokemon.species.name
+      console.log(result);
       if(result !== 'No Thanks'){
         this.pokemons$ = this.pokemons$.pipe(
           map((pokemons) => {

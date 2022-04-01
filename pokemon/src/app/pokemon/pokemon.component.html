@@ -2,6 +2,10 @@
     <app-card *ngFor="let pokemon of pokemons$ | async" [pokemonlist] = "pokemon" (click)="openDialog(pokemon)"></app-card>
 </div>
 
+<div class="btn">
+    <button mat-raised-button color="primary"> all</button>
+</div>
+
 
 
 
