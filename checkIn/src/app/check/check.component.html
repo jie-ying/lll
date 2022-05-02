@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="holder" [formGroup]="infoForm">
+        <div class="text">
+            <h2>Check In</h2>
+            <h3>Hi there, let's confirm it's you</h3>
+            <h4>Enter the patients date of birth and ZIP code to start check in</h4>
+        </div>
+        
+        <div class="info">
+            <p>Patient's date of birth</p>
+            <input type="date" formControlName="birth">
+            <p>Patients zipcode(5 digit)</p>
+            <input type="text" formControlName="zipcode">
+            <button type="submit" (click) = 'onSubmit()' [disabled]="!infoForm.valid">Continue</button>
+        </div>
+
+        
+    </div>
+</div>
