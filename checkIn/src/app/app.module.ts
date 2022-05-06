@@ -10,11 +10,18 @@ import { DataService } from './service/data.service';
 import { InfoService } from './service/info.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { InfoComponent } from './info/info.component';
+import { CheckinRoutingModule } from './check/checkin-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    CheckComponent
+    CheckComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +29,11 @@ import { StoreModule } from '@ngrx/store';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+    CheckinRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [DataService, InfoService],
   bootstrap: [AppComponent]

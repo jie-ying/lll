@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Info } from '../info.model';
+import { Info } from '../interface/info.model';
 import { InfoService } from '../service/info.service';
 
 @Component({
