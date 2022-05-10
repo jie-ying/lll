@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Info } from '../interface/info.model';
 import { InfoService } from '../service/info.service';
+import { checkin, patientsDetail } from '../statements/checkin.action';
 
 @Component({
   selector: 'app-check',
@@ -15,7 +18,7 @@ export class CheckComponent{
   infoForm: FormGroup = this.fb.group({
     birth: ['', Validators.required],
     zipcode: ['', Validators.required]
-  })
+  });
 
   getBirth(){
     return this.infoForm.get('birth');
@@ -25,10 +28,13 @@ export class CheckComponent{
     return this.infoForm.get('zipcode');
   }
 
-  constructor(private infoService: InfoService, private fb: FormBuilder) {  }
+  constructor(private infoService: InfoService, 
+    private fb: FormBuilder, 
+    private store: Store,
+    private router: Router) {  }
 
   onSubmit(){
-    this.validate = true;
+    // this.validate = true;
     this.patients = {
       birth: this.infoForm.value.birth,
       zipcode: this.infoForm.value.zipcode
@@ -38,6 +44,15 @@ export class CheckComponent{
     this.validate = this.infoService.validatePatients(this.patients);
     console.log(this.validate);
 
+    setTimeout(() => {
+      this.router.navigate(['info'])
+      this.store.dispatch(checkin({
+        birth: this.infoForm.value.birth,
+        zipcode: this.infoForm.value.zipcode
+      }));
+      this.store.dispatch(patientsDetail(this.infoService.getPatient(this.patients)))
+      console.log("login successful")
+    }, 2000);
   }
 
 }

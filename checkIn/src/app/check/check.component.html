@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="holder" [formGroup]="infoForm">
+    <form class="holder" [formGroup]="infoForm" (ngSubmit)="onSubmit()">
         <div class="text">
             <h2>Check In</h2>
             <h3>Hi there, let's confirm it's you</h3>
@@ -8,12 +8,11 @@
         
         <div class="info">
             <p>Patient's date of birth</p>
-            <input type="date" formControlName="birth">
+            <input type="date" formControlName="birth" />
             <p>Patients zipcode(5 digit)</p>
-            <input type="text" formControlName="zipcode">
-            <button type="submit" (click) = 'onSubmit()' [disabled]="!infoForm.valid">Continue</button>
+            <input type="text" formControlName="zipcode" />
+            <button type='submit' [disabled]="!infoForm.valid">Continue</button>
         </div>
-    </div>
+    </form>
 </div>
 
-<app-info></app-info>

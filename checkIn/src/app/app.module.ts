@@ -11,10 +11,10 @@ import { InfoService } from './service/info.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { InfoComponent } from './info/info.component';
-import { CheckinRoutingModule } from './check/checkin-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { checkinReducer } from './statements/checkin.reducer';
 
 
 @NgModule({
@@ -29,13 +29,12 @@ import {MatDividerModule} from '@angular/material/divider';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
-    CheckinRoutingModule,
+    StoreModule.forRoot({checkin: checkinReducer}),
     BrowserAnimationsModule,
     MatCardModule,
     MatDividerModule
   ],
   providers: [DataService, InfoService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

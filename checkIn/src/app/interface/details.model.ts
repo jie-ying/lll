@@ -1,4 +1,4 @@
-export interface Details {
+export interface Detail {
     address: string,
     appointmentDateTime: string,
     appointmentType: string,
